@@ -1,5 +1,8 @@
 <?php namespace App\Http\Controllers;
 
+use App\Domain\Entities\Post;
+use Doctrine\ORM\EntityManager;
+
 class HomeController extends Controller {
 
 	/*
@@ -13,15 +16,16 @@ class HomeController extends Controller {
 	|
 	*/
 
-	/**
-	 * Create a new controller instance.
-	 *
-	 * @return void
-	 */
-	public function __construct()
+    /**
+     * Create a new controller instance.
+     *
+     * @param EntityManager $entityManager
+     * @param Post          $post
+     */
+	public function __construct(EntityManager $entityManager)
 	{
-		$this->middleware('auth');
-	}
+        $this->entityManager = $entityManager;
+    }
 
 	/**
 	 * Show the application dashboard to the user.
@@ -30,7 +34,10 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('home');
+        $post = new Post(['title' => 'Hello World', 'body' => 'Body']);
+
+        $this->entityManager->persist($post);
+        $this->entityManager->flush();
 	}
 
 }

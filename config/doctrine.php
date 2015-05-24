@@ -6,25 +6,25 @@
 
 	'metadata' => [
 
-		'driver' => 'config',
+		'driver' => 'annotation',
 
 		//
 		// Alternatively, if you want to use a chain, specify multiple drivers as nested arrays.
 		//
-		[
-			'driver' => 'config'
-		],
+		//[
+		//	'driver' => 'config'
+		//],
 		[
 			'driver' => 'annotation',
 		//	'namespace' => 'App'
 		//  'alias'  => 'DoctrineModel'
 		],
-		[
-			'driver'=>'yaml',
-		],
-		[
-			'driver'=>'xml'
-		]
+		//[
+		//	'driver'=>'yaml',
+		//],
+		//[
+		//	'driver'=>'xml'
+		//]
 		//
 		// ...accepting PRs for more!
 
